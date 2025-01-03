@@ -4,16 +4,9 @@ function formatPage() {
         $('#course_name').text("<NOT SET>");
         return;
     }
-
     $('#course_name').text(course.name);
+
     displayTable();
-
-    var course = JSON.parse(localStorage.getItem("gttrounds") || "[]");
-    if(course.name == null){
-        $('#course_name').text("<NOT SET>");
-        return;
-    }
-
 };
 
 function resetTable() {
@@ -32,9 +25,10 @@ function displayTable() {
     setCoursePars(course.pars);
     setCourseStrokes(course.strokes);
 
-//    $.each(trips, function (index, trip) {
-//        addTripToTable(trip, index)
-//    });
+    var rounds = JSON.parse(localStorage.getItem("gttrounds") || "[]");
+    $.each(rounds, function (index, round) {
+        addRoundToTable(round, index);
+    });
 
     $('#current_table').show(500);
 };
@@ -62,6 +56,29 @@ function setCoursePars(pars) {
     }
     rowContent += '<th class=\"table-cell-centre-align\">' + psum_in + '</th><th class=\"table-cell-centre-align\">' + (psum_in + psum_out) + '</th><th>&nbsp</th><th>&nbsp</th>';
     $('#tt_pars').append(rowContent);
+};
+
+function addRoundToTable(round, index) {
+    var psum_out = psum_in = 0;
+    var rowContent = '<tr>';
+    rowContent += '<td>' + round.player + '</td>';
+    rowContent += '<td>' + round.phcp + '</td>';
+    rowContent += '<td>&nbsp</td>';
+
+    for (let i = 0; i < 9; i++) {
+        rowContent += '<td class=\"table-cell-centre-align\">' + round.strokes[i] + '</td>';
+        psum_out += round.strokes[i];
+    }
+    rowContent += '<td class=\"table-cell-centre-align\">' + psum_out + '</td><td>&nbsp</td><td>&nbsp</td>';
+
+    for (let i = 9; i < 18; i++) {
+        rowContent += '<td class=\"table-cell-centre-align\">' + round.strokes[i] + '</td>';
+        psum_in += round.strokes[i];
+    }
+    rowContent += '<td class=\"table-cell-centre-align\">' + psum_in + '</td><td class=\"table-cell-centre-align\">' + (psum_in + psum_out) + '</td><td>&nbsp</td><td>&nbsp</td>';
+
+    rowContent += '</tr>';
+    $('#tt_body').append(rowContent);
 };
 
 function setCourseStrokes(strokes) {

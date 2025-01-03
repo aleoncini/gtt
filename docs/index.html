@@ -110,7 +110,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody id="tt_body">
       <tr>
         <td>Andrea Brancaccio</td>
         <td>11</td>
@@ -254,22 +254,22 @@
 
       formatPage();
 
-        $('#startOverButton').click(function(){
-            $("#confirmStartOverModal").modal('hide');
-            resetTable();
-        });
+      $('#startOverButton').click(function(){
+        $("#confirmStartOverModal").modal('hide');
+        resetTable();
+      });
 
-        $('#saveCourseInfoButton').click(function(){
-          $("#courseInfoModal").modal('hide');
-          var course = {};
+      $('#saveCourseInfoButton').click(function(){
+        $("#courseInfoModal").modal('hide');
+        var course = {};
 
-          course.name = $('#courseNameInput').val();
-          course.pars = parseInput($('#parsInput').val());
-          course.strokes = parseInput($('#strokesInput').val());
+        course.name = $('#courseNameInput').val();
+        course.pars = parseInput($('#parsInput').val());
+        course.strokes = parseInput($('#strokesInput').val());
 
-          localStorage.setItem('gttcourse', JSON.stringify(course));
-          formatPage();
-        });
+        localStorage.setItem('gttcourse', JSON.stringify(course));
+        formatPage();
+      });
 
         $('#saveAssociateInfoButton').click(function(){
             if ($('#associateNameInput').val().length == 0) {
