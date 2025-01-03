@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="javascript tool to make a tournament table">
+    <meta name="author" content="Andrea Leoncini">
+    <meta name="keywords" value="golf, ztour, zingaro tour, classifica, roma">
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <title>ztour.org - Tournament Table</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- App specific CSS -->
+    <link href="css/zt_gtt.css" rel="stylesheet">
+
+  </head>
+
+<body style="padding-top: 8rem">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html"><img src="img/hr_transparent.png" alt="spacer" height="4" width="40"><img src="img/zt_logo.png" alt="ZT Logo" height="40" width="40">&nbsp;&nbsp;ztour<span style="color: #A30000">.org</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+<main role="main" class="container">
+
+<div>
+  <h1><img src="img/zt_logo_dark.png" alt="ZT Logo" height="60" width="60">&nbsp;Z<span style="color: #A30000">Tour</span> Tournament Table</h1>
+
+  <p class="text-end">Set the <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#courseInfoModal">Course</button> You can also <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#confirmStartOverModal">Start Over</button> or you can download for the <button id="pdfButton" type="button" class="btn btn-outline-secondary btn-sm"  onclick="javascript:saveAsPdf();">web site</button></p>
+
+  <br><br>
+
+  <p class="arch">Course: <span id="course_name" style="font-size: 1.25em; color: #A30000"></span> - results and tournament table</p>
+  <div class="container" id="current_table" style="display:none">
+    <table  style="width: 100%;">
+      <thead>
+        <tr>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th class="table-cell-centre-align">1</th>
+          <th class="table-cell-centre-align">2</th>
+          <th class="table-cell-centre-align">3</th>
+          <th class="table-cell-centre-align">4</th>
+          <th class="table-cell-centre-align">5</th>
+          <th class="table-cell-centre-align">6</th>
+          <th class="table-cell-centre-align">7</th>
+          <th class="table-cell-centre-align">8</th>
+          <th class="table-cell-centre-align">9</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th class="table-cell-centre-align">10</th>
+          <th class="table-cell-centre-align">11</th>
+          <th class="table-cell-centre-align">12</th>
+          <th class="table-cell-centre-align">13</th>
+          <th class="table-cell-centre-align">14</th>
+          <th class="table-cell-centre-align">15</th>
+          <th class="table-cell-centre-align">16</th>
+          <th class="table-cell-centre-align">17</th>
+          <th class="table-cell-centre-align">18</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+        </tr>
+        <tr id="tt_pars">
+        </tr>
+        <tr id="tt_strokes">
+        </tr>
+        <tr>
+          <th>player</th>
+          <th>hcp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+          <th>&nbsp</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <td>Andrea Brancaccio</td>
+        <td>11</td>
+        <td>&nbsp</td>
+        <td>3</td>
+        <td>4</td>
+        <td>3</td>
+        <td>6</td>
+        <td>4</td>
+        <td>3</td>
+        <td>5</td>
+        <td>3</td>
+        <td>3</td>
+        <td class="tot">34</td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
+        <td>4</td>
+        <td>4</td>
+        <td>3</td>
+        <td>5</td>
+        <td>5</td>
+        <td class="tot">33</td>
+        <td class="tot">67</td>
+        <td class="tot">56</td>
+        <td class="tot">35</td>
+      </tr>
+      <tr>
+        <td>Federico Morena</td>
+        <td>12</td>
+        <td>&nbsp</td>
+        <td>4</td>
+        <td>3</td>
+        <td>6</td>
+        <td>3</td>
+        <td>5</td>
+        <td>3</td>
+        <td>3</td>
+        <td>5</td>
+        <td>3</td>
+        <td class="tot">35</td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+        <td>3</td>
+        <td>4</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
+        <td>7</td>
+        <td>4</td>
+        <td>4</td>
+        <td>4</td>
+        <td class="tot">35</td>
+        <td class="tot">70</td>
+        <td class="tot">58</td>
+        <td class="tot">34</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</main><!-- /.container -->
+
+  <footer class="container">
+    <hr>
+    <p>&copy; ZTour Association 2025-2030</p>
+  </footer>
+
+  <!-- Modal form to confirm the reset of all trips a start a new report -->
+  <div id="confirmStartOverModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Start a Tournament Table</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>WARNING!</p>
+          <p>If you start a new Tournament all the rounds currently inserted will be lost.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button id="startOverButton" type="button" class="btn btn-primary">Start New Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal form to specify course information -->
+  <div id="courseInfoModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Course set up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Name</span>
+            </div>
+            <input id="courseNameInput" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          </div>
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">pars</span>
+            </div>
+            <input id="parsInput" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          </div>
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">strokes</span>
+            </div>
+            <input id="strokesInput" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button id="saveCourseInfoButton" type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap, JQuery and app core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <!-- JavaScript application libraries-->
+  <script src="js/gtt.js"></script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+
+      formatPage();
+
+        $('#startOverButton').click(function(){
+            $("#confirmStartOverModal").modal('hide');
+            resetTable();
+        });
+
+        $('#saveCourseInfoButton').click(function(){
+          $("#courseInfoModal").modal('hide');
+          var course = {};
+
+          course.name = $('#courseNameInput').val();
+          course.pars = parseInput($('#parsInput').val());
+          course.strokes = parseInput($('#strokesInput').val());
+
+          localStorage.setItem('gttcourse', JSON.stringify(course));
+          formatPage();
+        });
+
+        $('#saveAssociateInfoButton').click(function(){
+            if ($('#associateNameInput').val().length == 0) {
+                $("#associateInfoFormNotCorrect").html('Please insert a valid Associate full name');
+                $("#associateInfoFormNotCorrect").fadeIn();
+                return;
+            }
+            if ($('#vehicleTypeInput').val().length == 0) {
+                $("#associateInfoFormNotCorrect").html('Please insert a valid vehicle type');
+                $("#associateInfoFormNotCorrect").fadeIn();
+                return;
+            }
+            if (($('#mileageRateInput').val().length == 0) || (isNaN($('#mileageRateInput').val()))) {
+                $("#associateInfoFormNotCorrect").html('Please insert a numeric value in the Rate Field');
+                $("#associateInfoFormNotCorrect").fadeIn();
+                return;
+            }
+            var rate = $('#mileageRateInput').val();
+            var regEx = /^\d{1}\.\d{4}$/;
+            if(! rate.match(regEx)){
+                $("#associateInfoFormNotCorrect").html('Please use the format <b>#.####</b> for the Rate Field');
+                $("#associateInfoFormNotCorrect").fadeIn();
+                return;
+            }
+            localStorage.setItem('associateName', $('#associateNameInput').val());
+            localStorage.setItem('vehicleType', $('#vehicleTypeInput').val());
+            localStorage.setItem('mileageRate', rate);
+            localStorage.setItem('latestMileage', 0);
+            $("#enterAssociateInfoModal").modal('hide');
+        });
+
+        $(document).on("click", ".delete_trip", function () {
+            var trips = JSON.parse(localStorage.getItem("mrtTrips"));
+            trips.splice(this.dataset.id, 1);
+            localStorage.setItem('mrtTrips', JSON.stringify(trips));
+            $(this).parent().remove();
+        });
+
+    });
+
+  </script>
+
+</body>
+</html>
