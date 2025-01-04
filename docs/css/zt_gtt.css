@@ -5,3 +5,36 @@
     text-align: center;
     vertical-align: middle;
 }
+
+.cell-names {
+    padding: 2px;
+    border-bottom: 1px dashed gray;
+    text-align: end;
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+.hd {
+    font-weight: bold;
+}
+
+.red {
+    color: #A30000;
+}
+
+.cell-pts {
+    font-weight: normal;
+    padding: 2px;
+    border: 1px dashed gray;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+.cell-ttl {
+    padding: 2px;
+    border-bottom: 1px dashed gray;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+}

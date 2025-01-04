@@ -39,6 +39,7 @@
   <br><br>
 
   <p class="arch">Course: <span id="course_name" style="font-size: 1.25em; color: #A30000"></span> - results and tournament table</p>
+  <p><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addRoundModal">Add Round</button></p>
   <div class="container" id="current_table" style="display:none">
     <table  style="width: 100%;">
       <thead>
@@ -46,27 +47,27 @@
           <th>&nbsp</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
-          <th class="table-cell-centre-align">1</th>
-          <th class="table-cell-centre-align">2</th>
-          <th class="table-cell-centre-align">3</th>
-          <th class="table-cell-centre-align">4</th>
-          <th class="table-cell-centre-align">5</th>
-          <th class="table-cell-centre-align">6</th>
-          <th class="table-cell-centre-align">7</th>
-          <th class="table-cell-centre-align">8</th>
-          <th class="table-cell-centre-align">9</th>
+          <th class="cell-pts red">1</th>
+          <th class="cell-pts red">2</th>
+          <th class="cell-pts red">3</th>
+          <th class="cell-pts red">4</th>
+          <th class="cell-pts red">5</th>
+          <th class="cell-pts red">6</th>
+          <th class="cell-pts red">7</th>
+          <th class="cell-pts red">8</th>
+          <th class="cell-pts red">9</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
-          <th class="table-cell-centre-align">10</th>
-          <th class="table-cell-centre-align">11</th>
-          <th class="table-cell-centre-align">12</th>
-          <th class="table-cell-centre-align">13</th>
-          <th class="table-cell-centre-align">14</th>
-          <th class="table-cell-centre-align">15</th>
-          <th class="table-cell-centre-align">16</th>
-          <th class="table-cell-centre-align">17</th>
-          <th class="table-cell-centre-align">18</th>
+          <th class="cell-pts red">10</th>
+          <th class="cell-pts red">11</th>
+          <th class="cell-pts red">12</th>
+          <th class="cell-pts red">13</th>
+          <th class="cell-pts red">14</th>
+          <th class="cell-pts red">15</th>
+          <th class="cell-pts red">16</th>
+          <th class="cell-pts red">17</th>
+          <th class="cell-pts red">18</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
@@ -77,8 +78,9 @@
         <tr id="tt_strokes">
         </tr>
         <tr>
-          <th>player</th>
-          <th>hcp</th>
+          <th class="cell-names hd">player</th>
+          <th class="cell-names">hcp</th>
+          <th class="cell-names">&nbsp</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
@@ -89,8 +91,7 @@
           <th>&nbsp</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
-          <th>&nbsp</th>
-          <th>&nbsp</th>
+          <th class="cell-ttl">stb</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
           <th>&nbsp</th>
@@ -109,68 +110,7 @@
           <th>&nbsp</th>
         </tr>
       </thead>
-
       <tbody id="tt_body">
-      <tr>
-        <td>Andrea Brancaccio</td>
-        <td>11</td>
-        <td>&nbsp</td>
-        <td>3</td>
-        <td>4</td>
-        <td>3</td>
-        <td>6</td>
-        <td>4</td>
-        <td>3</td>
-        <td>5</td>
-        <td>3</td>
-        <td>3</td>
-        <td class="tot">34</td>
-        <td>&nbsp</td>
-        <td>&nbsp</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-        <td>4</td>
-        <td>4</td>
-        <td>3</td>
-        <td>5</td>
-        <td>5</td>
-        <td class="tot">33</td>
-        <td class="tot">67</td>
-        <td class="tot">56</td>
-        <td class="tot">35</td>
-      </tr>
-      <tr>
-        <td>Federico Morena</td>
-        <td>12</td>
-        <td>&nbsp</td>
-        <td>4</td>
-        <td>3</td>
-        <td>6</td>
-        <td>3</td>
-        <td>5</td>
-        <td>3</td>
-        <td>3</td>
-        <td>5</td>
-        <td>3</td>
-        <td class="tot">35</td>
-        <td>&nbsp</td>
-        <td>&nbsp</td>
-        <td>3</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-        <td>7</td>
-        <td>4</td>
-        <td>4</td>
-        <td>4</td>
-        <td class="tot">35</td>
-        <td class="tot">70</td>
-        <td class="tot">58</td>
-        <td class="tot">34</td>
-      </tr>
       </tbody>
     </table>
   </div>
@@ -198,7 +138,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button id="startOverButton" type="button" class="btn btn-primary">Start New Report</button>
+          <button id="startOverButton" type="button" class="btn btn-primary">Start New Tournament</button>
         </div>
       </div>
     </div>
@@ -240,6 +180,38 @@
     </div>
   </div>
 
+  <!-- Modal form to specify course information -->
+  <div id="addRoundModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add round to the tournament table</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group col-md-8">
+              <label for="inputPlayerName">Player Name</label>
+              <input type="text" class="form-control" id="inputPlayerName">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputPlayingHcp">Playing hcp</label>
+              <input type="text" class="form-control" id="inputPlayingHcp">
+            </div>
+            <div class="form-group">
+              <label for="inputScores">Score card</label>
+              <input type="text" class="form-control" id="inputScores">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button id="saveRoundButton" type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Bootstrap, JQuery and app core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
@@ -271,35 +243,19 @@
         formatPage();
       });
 
-        $('#saveAssociateInfoButton').click(function(){
-            if ($('#associateNameInput').val().length == 0) {
-                $("#associateInfoFormNotCorrect").html('Please insert a valid Associate full name');
-                $("#associateInfoFormNotCorrect").fadeIn();
-                return;
-            }
-            if ($('#vehicleTypeInput').val().length == 0) {
-                $("#associateInfoFormNotCorrect").html('Please insert a valid vehicle type');
-                $("#associateInfoFormNotCorrect").fadeIn();
-                return;
-            }
-            if (($('#mileageRateInput').val().length == 0) || (isNaN($('#mileageRateInput').val()))) {
-                $("#associateInfoFormNotCorrect").html('Please insert a numeric value in the Rate Field');
-                $("#associateInfoFormNotCorrect").fadeIn();
-                return;
-            }
-            var rate = $('#mileageRateInput').val();
-            var regEx = /^\d{1}\.\d{4}$/;
-            if(! rate.match(regEx)){
-                $("#associateInfoFormNotCorrect").html('Please use the format <b>#.####</b> for the Rate Field');
-                $("#associateInfoFormNotCorrect").fadeIn();
-                return;
-            }
-            localStorage.setItem('associateName', $('#associateNameInput').val());
-            localStorage.setItem('vehicleType', $('#vehicleTypeInput').val());
-            localStorage.setItem('mileageRate', rate);
-            localStorage.setItem('latestMileage', 0);
-            $("#enterAssociateInfoModal").modal('hide');
-        });
+      $('#saveRoundButton').click(function(){
+        $("#addRoundModal").modal('hide');
+        var round = {};
+        round.player = $('#inputPlayerName').val();
+        round.hcp = Number($('#inputPlayingHcp').val() || 0);
+        round.scores = parseInput($('#inputScores').val());
+        round.stb = calculateStableford(round);
+
+        var rounds = JSON.parse(localStorage.getItem("gttrounds") || "[]");
+        addRoundToTable(round, rounds.length);
+        rounds.push(round);
+        localStorage.setItem('gttrounds', JSON.stringify(rounds));
+      });
 
         $(document).on("click", ".delete_trip", function () {
             var trips = JSON.parse(localStorage.getItem("mrtTrips"));
